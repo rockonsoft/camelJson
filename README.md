@@ -1,5 +1,7 @@
 # JSON 3-Ways
-
+```json 
+{ "Saying": "Trust the universe, but tie up your camels" } 
+```
 ## Introduction
 In a recent C# project I worked on, the team seemed to spend a great deal of time on getting the JSON
 serialization/de-serialization right. I also  wonder how hard this task is in C# compared to python and nodejs.
@@ -15,6 +17,7 @@ Read the following JSON from a file and print the resulting object to STD out.
 }]
 ```
 The file contains a simple list of a 'person' object to silently witness the three techniques in action.
+All the code for this blog can be found [here.](https://github.com/rockonsoft/camelJson)
 
 ## Dot Net Core
 The inspiration for the code comes from [here.](http://stackoverflow.com/questions/13297563/read-and-parse-a-json-file-in-c-sharp)
