@@ -4,8 +4,9 @@
 ```
 ## Introduction
 In a recent C# project I worked on, the team seemed to spend a great deal of time on getting the JSON
-serialization/de-serialization right. I also  wonder how hard this task is in C# compared to python and nodejs.
-The following is reading JSON from a file using .Net core (dotnet), python and node.js on Ubuntu.  
+serialization/de-serialization right. I wondered how hard this task is in C# using .Net Core compared to Python and Nodejs.
+
+What follows is a comparison of reading JSON from a file using .Net Core (dotnet), Python and Node.js on Ubuntu.  
 
 ## Objective
 Read the following JSON from a file and print the resulting object to STD out.
@@ -33,7 +34,8 @@ All three the target languages and runtimes has their own package management sys
 | Node.js | nmp |
 
 Unfortunately, I had an older version of the dotnet core installed,. This version did not have the 
-```dotnet add package``` option, so I had to update my dotnet core installation. (see the notes section)  
+```dotnet add package``` 
+option, so I had to update my dotnet core installation. (see the notes section)  
 
 #### Creating the project
 To create the project:
@@ -41,21 +43,21 @@ To create the project:
 there seems to be a lot more templates to choose from to create new projects. Wheres as most of the project files in the previous 
 version was json, a few xml files, like the core.scproj (more familiar to VS users)
 *  To add the dependancy on Newtonsoft.Json ``` dotnet add package newtonsoft.json ```. This updates the csproj file.
-```bash
- dotnet add package newtonsoft.json
-Microsoft (R) Build Engine version 15.1.548.43366
-Copyright (C) Microsoft Corporation. All rights reserved.
+    The command has the following output:
+    ```
+    Microsoft (R) Build Engine version 15.1.548.43366
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    Writing /tmp/tmp2pl2sA.tmp
+    info : Adding PackageReference for package 'newtonsoft.json' into project '/home/hano/src/camelJson/core/core.csproj'.
+    log  : Restoring packages for /home/hano/src/camelJson/core/core.csproj...
+    info :   GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/index.json
+    info :   OK https://api.nuget.org/v3-flatcontainer/newtonsoft.json/index.json 282ms
+    info :   GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
+    info :   OK https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg 217ms
+    info : Package 'newtonsoft.json' is compatible with all the specified frameworks in project '/home/hano/src/camelJson/core/core.csproj'.
+    info : PackageReference for package 'newtonsoft.json' version '9.0.1' added to file '/home/hano/src/camelJson/core/core.csproj'.
+    ```
 
-  Writing /tmp/tmp2pl2sA.tmp
-info : Adding PackageReference for package 'newtonsoft.json' into project '/home/hano/src/camelJson/core/core.csproj'.
-log  : Restoring packages for /home/hano/src/camelJson/core/core.csproj...
-info :   GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/index.json
-info :   OK https://api.nuget.org/v3-flatcontainer/newtonsoft.json/index.json 282ms
-info :   GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg
-info :   OK https://api.nuget.org/v3-flatcontainer/newtonsoft.json/9.0.1/newtonsoft.json.9.0.1.nupkg 217ms
-info : Package 'newtonsoft.json' is compatible with all the specified frameworks in project '/home/hano/src/camelJson/core/core.csproj'.
-info : PackageReference for package 'newtonsoft.json' version '9.0.1' added to file '/home/hano/src/camelJson/core/core.csproj'.
-```
 * It is possible to restore the packages to a directory using the --package switch ```dotnet restore core.csproj --packages ./packages```
 * The to read the file:
 ```csharp 
@@ -85,16 +87,17 @@ The process is very straight forward:
 * Create the file.
 * Edit the code.
 * Test and debug.
-The code could not be more simple:```python
-with open(fileName) as data_file:    
-    list = json.load(data_file)
+The code could not be more simple:
+    ```python
+    with open(fileName) as data_file:    
+        list = json.load(data_file)
 
-    for person in list:
-        print('Title: ' + person["title"])
-        print('FirstName: ' + person["firstName"])
-        print('LastName: ' + person["lastName"])
+        for person in list:
+            print('Title: ' + person["title"])
+            print('FirstName: ' + person["firstName"])
+            print('LastName: ' + person["lastName"])
 
-```
+    ```
 Run the script with ```'python' read.py ../data/simple.json```
 This was a quick typing exercise.
 
@@ -123,7 +126,7 @@ Run the script with ```node readjson.js ../data/simple.json```
 
 ## Conclusion
 * This is quite a trivial exercise, but a nice way to do a roundup of all the relevant tooling for .Net Core, Python and Node.js.
-* It took me about three times longer to get the .Net core solution going that with Python and Node.js. It also helps that Ubuntu comes with 
+* It took me about three times longer to get the .Net core solution going than with Python and Node.js. It also helps that Ubuntu comes with 
   Python and Node.js pre-installed.
 * Manipulating JSON just feels more part of the languages when using Python and Javascript.
 * That said, .Net core is cool and would only get better. In my mind it is geared towards bigger solutions.
